@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+
+<!-- class="container mt-4"   Router agregado el cual cuenta con el redicciomiento por default a "home"-->
+<!--<div *ngIf="auth.user$ | async as user">-->
+<div *ngIf="auth.user$ | async as user">
+    <!--{{user |json }} es una etiqueta especial en Angular que sirve para mostrar los componentes hijos de un componente. Es decir si queremos navegar entre componentes usamos esa etiqueta y configuramos nuestras rutas en app.routing.module(o como se llame tu archivo de rutas). Sin esta etiqueta no podemos navegar entre paginas, tambien hay que destacar que podemos tener un router-outlet dentro de otro(si estamos usando modulos).-->
+    <router-outlet> </router-outlet>
+</div>
+
+<div class="container mt-4">
+    <a></a>
+    <div class="shadow-lg p-3 mb-5 bg-white rounded fs-1">Ingresa en la parte superior antes de continuar :)</div>
+</div>

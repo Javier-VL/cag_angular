@@ -1,0 +1,102 @@
+<h1>Completa los campos de solicitud:</h1>
+<hr />
+
+<div class="row text-right">
+  <div class="col">
+    <button class="btn btn-danger" routerLink="/reimpresion">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form (ngSubmit)="guardarReimpresion(f)" #f="ngForm">
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Firebase ID"
+          [(ngModel)]="reimpresionSolicitud.id"
+          name="id"
+          disabled="disabled"
+        />
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre Completo"
+          [(ngModel)]="reimpresionSolicitud.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de solicitud</label>
+
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="reimpresionSolicitud.fecha_solicitud"
+          name="fechaSolicitd"
+          placeholder="00/00/00"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de examen</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="reimpresionSolicitud.fecha_examen"
+          name="fechaExamen"
+          placeholder="00/00/00"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Pago:</label>
+        <br />
+
+        <button
+          *ngIf="!reimpresionSolicitud.estado_pago"
+          (click)="reimpresionSolicitud.estado_pago = true"
+          class="btn btn-outline-danger w-50"
+          type="button"
+        >
+          <i class="fa fa-dizzy"></i>
+          SIN PAGAR
+        </button>
+
+        <button
+          *ngIf="reimpresionSolicitud.estado_pago"
+          (click)="reimpresionSolicitud.estado_pago = false"
+          class="btn btn-outline-success w-50"
+          type="button"
+        >
+          <i class="fa fa-smile"></i>
+          PAGADO
+        </button>
+      </div>
+
+      <hr />
+      <div class="form-group text-center">
+        <button
+          type="submit"
+          (click)="reimpresionSolicitud.estado_reimpresion = 'solicitada'"
+          class="btn btn-primary w-25"
+        >
+          <i class="fa fa-save"></i>
+          Solicitar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

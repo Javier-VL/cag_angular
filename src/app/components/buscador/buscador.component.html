@@ -1,0 +1,47 @@
+<div
+  class="text-sm-left lh-base font-normal text-none text-decoration-none text-reset"
+>
+  Bucando: <small>{{ termino | titlecase }}</small> ...
+</div>
+
+<div class="alert alert-warning" role="alert" *ngIf="reimpresiones.length == 0">
+  Lo sentimos no existen coincidencias para:
+  <p class="text-uppercase fw-bold">{{ termino }}</p>
+</div>
+
+<hr />
+<div
+  class="card mb-3 card border-primary mb-3"
+  style="max-width: 540px"
+  *ngFor="let reimpresion of reimpresiones"
+>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        src="../../../assets/img/icons/ICON-CONSTANCIA.svg"
+        class="card-img-top"
+        alt="ICON-CONSTANCIA"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body text-primary">
+        <h5 class="card-title">{{ reimpresion.nombre }}</h5>
+        <p class="card-text">
+          Fecha de Solicitud: {{ reimpresion.fecha_solicitud }}
+        </p>
+        <p class="card-text">
+          Fecha de Examen: {{ reimpresion.fecha_examen | date: "fullDate" }}
+        </p>
+        <p class="card-text">Estado del Pago: {{ reimpresion.estado_pago }}</p>
+        <h5 class="card-title">{{ reimpresion.estado_reimpresion }}</h5>
+        <a
+          [routerLink]="['/reimpresion']"
+          class="btn btn-warning btn-block"
+          href="#"
+          role="button"
+          >Volver...
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

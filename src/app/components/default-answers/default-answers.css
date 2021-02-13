@@ -1,0 +1,34 @@
+.btn-white:hover {
+    color: #2e354f;
+    background: #999;
+}
+
+
+/*Layout */
+
+header {
+    background: #2e354f;
+    padding: 45px 0;
+    color: #fff;
+}
+
+section {
+    padding: 45px 0;
+}
+
+.container {
+    width: 620px;
+    margin: auto;
+}
+
+.section-two {
+    background: #2e354f;
+    color: #fff;
+}
+
+
+/* Images*/
+
+img {
+    width: 100%;
+}

@@ -1,0 +1,109 @@
+<div
+  *ngIf="loading == false && reimpresiones.length == 0"
+  class="alert alert-warning text-center mt-3"
+>
+  <h4 class="alert-heading">NO HAY REGISTROS</h4>
+  <p>
+    <i class="fa fa-exclamation-triangle fa-3x"></i>
+  </p>
+  <p class="mb-0">Espere un momento</p>
+</div>
+
+<div *ngIf="loading == true" class="alert alert-info text-center mt-3">
+  <h4 class="alert-heading">Cargado</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">Espere un momento</p>
+</div>
+
+<!--Reimpresiones Cards-->
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" *ngFor="let reimpresion of reimpresiones; let i = index">
+    <div
+      *ngIf="reimpresion.estado_pago == false; else reimpresionPagada"
+      class="card mb-3 card border-primary mb-3"
+      style="max-width: 540px"
+    >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="../../../assets/img/icons/ICON-CONSTANCIA.svg"
+            class="card-img-top"
+            alt="ICON-CONSTANCIA"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body text-primary">
+            <h5 class="card-title">{{ reimpresion.nombre }}</h5>
+            <p class="card-text">
+              Fecha de Solicitud: {{ reimpresion.fecha_solicitud }}
+            </p>
+            <p class="card-text">
+              Fecha de Examen: {{ reimpresion.fecha_examen }}
+            </p>
+            <p class="card-text">
+              Estado del Pago:
+              <a *ngIf="!reimpresion.estado_pago">SIN PAGAR</a>
+              <a *ngIf="reimpresion.estado_pago">PAGADA</a>
+            </p>
+            <h5 class="card-title">
+              Estado: {{ reimpresion.estado_reimpresion | titlecase }}
+            </h5>
+            <a
+              (click)="verReimpresion(i)"
+              [routerLink]="['/info-reimpresion', reimpresion.id]"
+              class="btn btn-primary btn-block"
+              href="#"
+              role="button"
+              >Ver más
+              <i class="bi bi-chevron-compact-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--TEMPLATE PAGADO-->
+    <ng-template #reimpresionPagada>
+      <div class="card mb-3 card border-success mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="../../../assets/img/icons/ICON-CONSTANCIA.svg"
+              class="card-img-top"
+              alt="ICON-CONSTANCIA"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body text-success">
+              <h5 class="card-title">{{ reimpresion.nombre }}</h5>
+              <p class="card-text">
+                Fecha de Solicitud: {{ reimpresion.fecha_solicitud }}
+              </p>
+              <p class="card-text">
+                Fecha de Examen: {{ reimpresion.fecha_examen }}
+              </p>
+              <p class="card-text">
+                Estado del Pago:
+                <a *ngIf="!reimpresion.estado_pago">SIN PAGAR</a>
+                <a *ngIf="reimpresion.estado_pago">PAGADA</a>
+              </p>
+              <h5 class="card-title">
+                Estado: {{ reimpresion.estado_reimpresion | titlecase }}
+              </h5>
+              <a
+                (click)="verReimpresion(i)"
+                [routerLink]="['/info-reimpresion', reimpresion.id]"
+                class="btn btn-success btn-block"
+                href="#"
+                role="button"
+                >Ver más
+                <i class="bi bi-chevron-compact-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
